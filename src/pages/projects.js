@@ -10,7 +10,7 @@ export default function Projects () {
     
     return (
      <>
-     <Container maxWidth="xl" id="mainBody" sx={{ mt: 12 }}>
+     <Container maxWidth="xl" id="mainBody" sx={{ mt: {xs: 4, md: 12} }}>
         <Typography gutterBottom
             sx={{
               textAlign: "center",
@@ -27,15 +27,19 @@ export default function Projects () {
             Projects
         </Typography>
 
-        <Grid container maxWidth rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        {/* Project Cards */}
+        <Grid container maxWidth rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{marginBottom: 3}}>
             <Grid item xs={12} md={4}>
-                <ProjectCard projectName="Chore Tracker" path="/portfolio/dish.jpg"/>
+                <ProjectCard projectName="Chore Tracker" path="/portfolio/dish.jpg" demo={false} 
+                gitLink="https://github.com/dvala041/ChoreTracker" demoLink=""/>
             </Grid>
             <Grid item xs={12} md={4}>
-                <ProjectCard projectName="Lagos Food Bank" path="/portfolio/lagos.jpeg"/>
+                <ProjectCard projectName="Lagos Food Bank" path="/portfolio/lagos.jpeg" demo={true} 
+                gitLink="https://github.com/cornellh4i/lagos-volunteers" demoLink="https://lagos-volunteers.vercel.app/login"/>
             </Grid>
             <Grid item xs={12} md={4}>
-                <ProjectCard projectName="Lost and Found App"/>
+                <ProjectCard projectName="Lost and Found App" path="/portfolio/LostandFound.jpg"demo={true}
+                 gitLink="https://github.com/dvala041/Lost_And_Found" demoLink ="https://www.youtube.com/watch?v=DcUpOmtydV8"/>
             </Grid>
         </Grid>
       </Container>

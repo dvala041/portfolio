@@ -7,10 +7,12 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Circle } from '@mui/icons-material';
 import { Box } from '@mui/material';
+import Link from 'next/link';
+import Stack from '@mui/material';
 
-export default function ProjectCard({projectName, path}) {
+export default function ProjectCard({projectName, path, demo, gitLink, demoLink}) {
   return (
-    <Card>
+    <Card sx={{marginBottom: 3}}>
       <CardMedia
         sx={{ height: 280 }}
         image={path}
@@ -21,8 +23,17 @@ export default function ProjectCard({projectName, path}) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">GitHub</Button>
-        <Box sx={{ flexGrow: 1 }} />
+        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', gap: 2}}>
+            <Link href={gitLink} target="_blank" rel="noopener noreferrer">
+                <button class = "btn btn-color-2">GitHub</button>
+            </Link>
+
+            {demo &&
+            <Link href={demoLink} target="_blank" rel="noopener noreferrer">
+                <button class = "btn btn-color-2">Live Demo</button>
+            </Link> }
+
+        </Box>
       </CardActions>
     </Card>
   );
