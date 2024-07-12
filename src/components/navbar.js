@@ -32,7 +32,7 @@ function Navbar () {
             variant="h6"
             noWrap
             sx={{
-              mr: 2,
+              paddingLeft: {xs: 0, md: 10},
               fontFamily: 'sans-serif',
             //   fontWeight: 700,
               letterSpacing: '.2rem',
@@ -44,7 +44,7 @@ function Navbar () {
           </Typography>
           </Link>
             <Box sx={{flexGrow: 1}} />
-          <Link href="#section1" passHref>
+          <Link href="/about" passHref>
           <Typography
             variant="h6"
             noWrap
@@ -63,7 +63,7 @@ function Navbar () {
           </Link>
 
 
-          <Link href="#section2" passHref>
+          <Link href="/projects" passHref>
           <Typography
             variant="h6"
             noWrap
@@ -81,25 +81,6 @@ function Navbar () {
           </Typography>
           </Link>
 
-        
-          <Link href="#section3" passHref>
-          <Typography
-            variant="h6"
-            noWrap
-            sx={{
-              mr: 2,
-              fontFamily: 'sans-serif',
-              display: {xs: 'none', md: 'flex'},
-            //   fontWeight: 700,
-              letterSpacing: '.2rem',
-              color: 'black',
-              textDecoration: 'none',
-            }}
-          >
-            Contact
-          </Typography>
-          
-          </Link>
 
           {/* Menu Icon Button */}
           <IconButton

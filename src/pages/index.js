@@ -1,12 +1,7 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
-import { Poppins } from "next/font/google";
-import Navbar from "@/components/navbar";
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { Avatar } from "@mui/material";
-import Button from "@mui/material";
 import Stack from '@mui/material/Stack';
 import Link from "next/link";
 
@@ -29,7 +24,6 @@ export default function Home() {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              // paddingLeft: { xs: 'auto', md: 5 },
             }}
           >
             <Image 
