@@ -5,7 +5,7 @@ import Snackbar from '@mui/material/Snackbar';
 
 
 export default function Contact() {
-  const email = "dvalarezo041@gmail.com";
+  const email = "dev38@cornell.edu";
 
   const [state, setState] = React.useState({
     open: false,
