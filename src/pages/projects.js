@@ -30,8 +30,8 @@ export default function Projects () {
         {/* Project Cards */}
         <Grid container maxWidth rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{marginBottom: 3}}>
             <Grid item xs={12} md={4}>
-                <ProjectCard projectName="Chore Tracker" path="/portfolio/dish.jpg" demo={false} 
-                gitLink="https://github.com/dvala041/ChoreTracker" demoLink=""/>
+                <ProjectCard projectName="Obligo" path="/portfolio/dish.jpg" demo={true} 
+                gitLink="https://github.com/dvala041/ChoreTracker" demoLink="https://obligo.vercel.app"/>
             </Grid>
             <Grid item xs={12} md={4}>
                 <ProjectCard projectName="Lagos Food Bank" path="/portfolio/lagos.jpeg" demo={true} 
