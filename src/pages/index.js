@@ -68,7 +68,7 @@ export default function Home() {
               Software Developer
             </Typography>
             <Stack spacing={2} direction = {'row'} sx={{display: 'flex', justifyContent: 'center', gap: '1rem', mt: 3}}>
-              <Link href="/Valarezo_Cover_Letter_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <Link href="/Valarezo_Resume.pdf" target="_blank" rel="noopener noreferrer">
                 <button class = "btn btn-color-2" >Resume</button>
               </Link>
               <Link href="/contact" rel="noopener noreferrer">
