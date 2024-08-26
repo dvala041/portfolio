@@ -27,7 +27,8 @@ export default function Home() {
             }}
           >
             <Image 
-              src="/portfolio/david8 2.jpg"
+              src="/portfolio/dvProf.PNG"
+              // src="/portfolio/david8 2.jpg"
               width={300}
               height={300}
               alt="David"

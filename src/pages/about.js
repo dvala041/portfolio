@@ -61,14 +61,14 @@ export default function About () {
             <Typography gutterBottom sx={{marginBottom: {xs:4, md: 0}}}>
                 I'm a first generation latino studying Computer Science at Cornell's college of Engineering.
                 I first started coding in 9th grade when I taught myself how to program Arduino boards and make small projects with them.
-                I enjoyed the callenge a lot so in 10th grade I decided to enroll in Harvard's CS50 and completed the entire course.
+                I enjoyed the challenge a lot so in 10th grade I decided to enroll in Harvard's CS50 and completed the entire course.
                 I've always enjoyed the process of solving difficult problems and nothing is more rewarding to me than the satisfaction
                 of forging a product through lots of trial and error.
                 <br/>
                 <br/>
                 Fast forward to today where a lot of my work is focused on web development. I deeply enjoy the process of bringing
                 a web application to life and have learned a lot through self teaching myself. I am eager to continue learning and aim to build
-                a project with that helps a large user base.
+                a project that helps a large user base.
             </Typography>
           </Box>
         </Box>
