@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, FileText, ExternalLink } from "lucide-react"
+import PortfolioCarousel from "@/components/portfolioCarousel"
 
 
 
@@ -139,22 +140,30 @@ const projects = [
 
         </div>
 
-        {/* Round Picture */}
+        {/* Carousel */}
         <motion.div
           className = "flex flex-col justify-center items-center"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className = "h-80 w-80 rounded-full bg-gray-200 m-4"> 
-            <Image 
-              src="/portfolio/dvProf.PNG"
-              width={300}
-              height={300}
-              alt="David"
-              className="rounded-full object-cover h-full w-full"
-            />
-          </div>
+          <PortfolioCarousel 
+            slides={[
+              "/portfolio/carouselPictures/profSmile2.jpg",
+              "/portfolio/carouselPictures/Team.jpg",
+              "/portfolio/carouselPictures/C1_Office.jpg",
+              "/portfolio/carouselPictures/Family.jpg",
+              "/portfolio/carouselPictures/Hike.jpg",
+              "/portfolio/carouselPictures/HackSocial.jpg",
+              "/portfolio/carouselPictures/SF_Thing.jpg",
+            ]}
+            maxWidth="max-w-lg"
+            autoplay={true}
+            delay={9000}
+            loop={true}
+            aspect="4/3"
+            showIndicators={true}
+          />
         </motion.div>
         
       </div>
@@ -286,9 +295,16 @@ const projects = [
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="text-gray-300">
-                  <ul className="space-y-2 text-lg">
-                    <li>• Coming Soon!</li>
-                  </ul>
+                  <div className="w-full max-w-2xl mx-auto aspect-video">
+                    <iframe 
+                      className="w-full h-full rounded-lg"
+                      src="https://www.youtube.com/embed/jfy301656yQ"
+                      title="Capital One Internship Demo"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
