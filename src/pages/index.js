@@ -120,7 +120,7 @@ const projects = [
                   { icon: Linkedin, label: "LinkedIn", link: "http://www.linkedin.com/in/david-valarezo-304782245" },
                   { icon: Github, label: "Github", link: "https://github.com/dvala041" },
                   { icon: Mail, label: "Email", link: "mailto:dev38@cornell.edu" },
-                  // { icon: FileText, label: "Resume", link: "/portfolio/Valarezo_Resume.pdf" },
+                  { icon: FileText, label: "Resume", link: "/portfolio/Valarezo_Resume.pdf" },
                 ].map((item, index) => (
                   <motion.div key={item.label} variants={fadeInUp}>
                     <a href={item.link} target="_blank" rel="noopener noreferrer">
