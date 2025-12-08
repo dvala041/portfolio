@@ -14,7 +14,7 @@ import Autoplay from "embla-carousel-autoplay"
 /**
  * PortfolioCarousel
  * Props:
- * - slides: string[] (image paths in /public)
+ * - slides: Array of { src: string, caption?: string } or string[] (image paths in /public)
  * - maxWidth: tailwind max-width class (e.g. 'max-w-2xl')
  * - autoplay: boolean
  * - delay: autoplay delay in ms
@@ -37,7 +37,10 @@ export default function PortfolioCarousel({
     <div className={`w-full ${maxWidth}`}>
       <Carousel className="w-full" plugins={plugins} opts={loop ? { loop: true } : {}}>
         <CarouselContent>
-          {slides.map((src, index) => (
+          {slides.map((slide, index) => {
+            const src = typeof slide === 'string' ? slide : slide.src
+            const caption = typeof slide === 'object' ? slide.caption : null
+            return (
             <CarouselItem key={index}>
               <div className="p-2">
                 <Card>
@@ -45,11 +48,16 @@ export default function PortfolioCarousel({
                     <div className={`aspect-[${aspect}] w-full`}>
                       <img src={src} alt={`slide-${index + 1}`} className="h-full w-full object-cover" />
                     </div>
+                    {caption && (
+                      <div className="p-4 text-center text-sm text-gray-400">
+                        {caption}
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </div>
             </CarouselItem>
-          ))}
+          )})}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />

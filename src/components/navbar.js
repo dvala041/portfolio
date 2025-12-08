@@ -1,119 +1,51 @@
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import { useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-import MenuItem from '@mui/material/MenuItem';
-import Link from 'next/link';
-
-function Navbar () {   
-
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
+export default function Navbar() {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-      <Container maxWidth="xl" sx={{ height: '80px' }}> {/* Make the container fill the height */}
-        <Toolbar disableGutters sx={{ height: '100%', alignItems: 'center' }}> {/* Make the toolbar fill the height and vertically center its contents */}
-
-          <Link href="/" passHref>
-          <Typography
-            variant="h6"
-            noWrap
-            sx={{
-              paddingLeft: {xs: 0, md: 10},
-              fontFamily: 'sans-serif',
-            //   fontWeight: 700,
-              letterSpacing: '.2rem',
-              color: 'black',
-              textDecoration: 'none',
-            }}
+    <motion.nav 
+      className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex justify-between items-center">
+          <button 
+            onClick={() => scrollToSection('home')}
+            className="text-xl font-bold text-white hover:text-blue-400 transition-colors"
           >
             David Valarezo
-          </Typography>
-          </Link>
-            <Box sx={{flexGrow: 1}} />
-          <Link href="/about" passHref>
-          <Typography
-            variant="h6"
-            noWrap
-            sx={{
-              mr: 2,
-              fontFamily: 'sans-serif',
-            //   fontWeight: 700,
-              display: {xs: 'none', md: 'flex'},
-              letterSpacing: '.2rem',
-              color: 'black',
-              textDecoration: 'none',
-            }}
-          >
-            About
-          </Typography>
-          </Link>
-
-
-          <Link href="/projects" passHref>
-          <Typography
-            variant="h6"
-            noWrap
-            sx={{
-              mr: 2,
-              fontFamily: 'sans-serif',
-              display: {xs: 'none', md: 'flex'},
-              // fontWeight: 700,
-              letterSpacing: '.2rem',
-              color: 'black',
-              textDecoration: 'none',
-            }}
-          >
-            Projects
-          </Typography>
-          </Link>
-
-
-          {/* Menu Icon Button */}
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2, display: { xs: 'flex', md: 'none' } }}
-            onClick={handleMenuOpen}
-          >
-            <MenuIcon sx={{ color: 'black' }} />
-          </IconButton>
-
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleMenuClose}
-          >
-            <Link href="/about">
-              <MenuItem onClick={handleMenuClose}>
-                About
-              </MenuItem>
-            </Link>
-            <Link href="/projects">
-            <MenuItem onClick={handleMenuClose}>
-                Projects
-            </MenuItem>
-            </Link>
-          </Menu>
-        </Toolbar>
-    </Container>
-
+          </button>
+          <div className="flex gap-6">
+            <button 
+              onClick={() => scrollToSection('education')}
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              Education
+            </button>
+            <button 
+              onClick={() => scrollToSection('experience')}
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              Experience
+            </button>
+            <button 
+              onClick={() => scrollToSection('projects')}
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              Projects
+            </button>
+          </div>
+        </div>
+      </div>
+    </motion.nav>
   );
 }
-
-export default Navbar

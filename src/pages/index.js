@@ -7,8 +7,10 @@ import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, FileText, ExternalLink } from "lucide-react"
+import { Github, Linkedin, Mail, FileText, ExternalLink, FileDown } from "lucide-react"
 import PortfolioCarousel from "@/components/portfolioCarousel"
+import Navbar from "@/components/navbar"
+import Footer from "@/components/footer"
 
 
 
@@ -37,17 +39,19 @@ const projects = [
     date: "Jan 2025 - May 2025",
     demo: "https://ithaca-recovery-deployment.vercel.app/",
     github: true,
-    githubLink: "https://github.com/cornellh4i/ithaca-recovery"
+    githubLink: "https://github.com/cornellh4i/ithaca-recovery",
+    isPdf: false
   },
   {
     title: "A Data-Driven Analysis of Olympic Medal Distribution and Bias",
-    description: "Analyzed 120 years of Olympic results using regression, clustering, and Monte Carlo simulations to reveal fairness gaps in medal distribution.",
+    description: "Analyzed 120 years of Olympic results using regression, clustering, and Monte Carlo simulations. Key findings: identified significant disparities in medal distribution across countries, revealed bias patterns in judged sports, and demonstrated statistical evidence of home-field advantage affecting medal outcomes.",
     techStack: ["Python", "Pandas", "NumPy", "Matplotlib", "statsmodels"],
     imageUrl: "/portfolio/ORIE 2.png",
     date: "March 2025 - May 2025",
     demo: "/portfolio/Report.pdf",
     github: false,
-    githubLink: ""
+    githubLink: "",
+    isPdf: true
   },
   {
     title: "Obligo",
@@ -57,7 +61,8 @@ const projects = [
     date: "Jun 2024 – Aug 2024",
     demo: "https://obligo.vercel.app/",
     github: true,
-    githubLink: "https://github.com/dvala041/Obligo"
+    githubLink: "https://github.com/dvala041/Obligo",
+    isPdf: false
   },
   {
     title: "Intelligent Image Selector",
@@ -67,7 +72,8 @@ const projects = [
     date: "Apr 2024 – May 2024",
     demo: "https://youtu.be/u2Ccr0wPuh8",
     github: false,
-    githubLink: ""
+    githubLink: "",
+    isPdf: false
   },
   {
     title: "Lost and Found App",
@@ -77,7 +83,8 @@ const projects = [
     date: "Apr 2024 – May 2024",
     demo: "https://www.youtube.com/watch?v=DcUpOmtydV8",
     github: true,
-    githubLink: "https://github.com/dvala041/Lost_And_Found"
+    githubLink: "https://github.com/dvala041/Lost_And_Found",
+    isPdf: false
   },
   {
     title: "Portfolio",
@@ -87,14 +94,16 @@ const projects = [
     date: "May 2025",
     demo: "",
     github: true,
-    githubLink: "https://github.com/dvala041/portfolio"
+    githubLink: "https://github.com/dvala041/portfolio",
+    isPdf: false
   },
 ]
   return (
     <>
-    <div className = "bg-gray-800 w-screen min-h-screen">
+    <Navbar />
+    <div className = "bg-gray-800 w-screen min-h-screen pt-16">
       {/* HOME SCREEN */}
-      <div className = "h-screen w-screen flex flex-col md:flex-row justify-evenly md:justify-around items-center"> 
+      <div id="home" className = "h-screen w-screen flex flex-col md:flex-row justify-evenly md:justify-around items-center"> 
         <div className = "flex flex-col" >
 
           {/* Add typing animation to this */}
@@ -136,6 +145,16 @@ const projects = [
                   </motion.div>
                 ))}
               </motion.div>
+              <motion.p 
+                className="text-gray-300 text-lg mt-8 max-w-xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                I'm a rising junior at Cornell University's College of Engineering, majoring in Computer Science. 
+                I'm originally from Hackensack, New Jersey and my parents are both Ecuadorian. I am a first generation 
+                college student and I really enjoy the hands-on and problem-solving nature of software engineering.
+              </motion.p>
             </motion.div>
 
         </div>
@@ -149,16 +168,16 @@ const projects = [
         >
           <PortfolioCarousel 
             slides={[
-              "/portfolio/carouselPictures/profSmile2.jpg",
-              "/portfolio/carouselPictures/Team.jpg",
-              "/portfolio/carouselPictures/C1_Office.jpg",
-              "/portfolio/carouselPictures/Family.jpg",
-              "/portfolio/carouselPictures/Hike.jpg",
-              "/portfolio/carouselPictures/HackSocial.jpg",
-              "/portfolio/carouselPictures/SF_Thing.jpg",
+              { src: "/portfolio/carouselPictures/profSmile2.jpg", caption: "Taking a headshot at a garden in Secaucus, NJ (August 2024)" },
+              { src: "/portfolio/carouselPictures/Team.jpg", caption: "My Capital One team and I after our final presentation (August 2025)" },
+              { src: "/portfolio/carouselPictures/C1_Office.jpg", caption: "Me in the Capital One Office - McLean, VA (July 2025)" },
+              { src: "/portfolio/carouselPictures/Family.jpg", caption: "My family celebrating my 20th birthday with my dog Wowow" },
+              { src: "/portfolio/carouselPictures/Hike.jpg", caption: "Hiking to the top of Whiteface Mountain (4867 ft above sea level)" },
+              { src: "/portfolio/carouselPictures/HackSocial.jpg", caption: "Cornell Hack4Impact's end of year social (May 2025)" },
+              { src: "/portfolio/carouselPictures/SF_Thing.jpg", caption: "Visiting the Palace of Fine Arts in San Francisco, CA" },
             ]}
             maxWidth="max-w-lg"
-            autoplay={true}
+            autoplay={false}
             delay={9000}
             loop={true}
             aspect="4/3"
@@ -170,8 +189,8 @@ const projects = [
 
       {/* END OF HOME SCREEN */}
 
-      {/* START OF ABOUT ME SECTION */}
-
+      {/* START OF ABOUT ME SECTION - COMMENTED OUT */}
+      {/* 
       <section id="about" className="py-20 bg-gray-900">
         <div className="container mx-auto px-4">
           <motion.h2
@@ -207,69 +226,12 @@ const projects = [
           </motion.div>
         </div>
       </section>
+      */}
 
       {/* END OF ABOUT ME SECTION */}
-      {/* START OF EDUCATION SECTION */}
-
-      <section id="education" className="py-20 bg-gray-800">
-        <div className="container mx-auto px-4 text-white">
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold text-center mb-12 text-white"
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            Education
-          </motion.h2>
-          <motion.div
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: 60 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-          >
-            <Card className="bg-gray-700 border-gray-600 max-w-4xl mx-auto">
-              <CardHeader>
-                <CardTitle className="text-white text-2xl">Cornell University College of Engineering</CardTitle>
-                <CardDescription className="text-gray-300 text-lg">
-                  Bachelor of Science in Computer Science
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="text-gray-300">
-                <p className="text-lg mb-6">
-                  <strong>GPA:</strong> 3.64/4.00 (Dean's List 3/4 Semesters)
-                </p>
-                <div className = "mb-6">
-                  <h4 className="text-xl font-semibold mb-4 text-white">Leadership and Activities:</h4>
-                  <ul className="space-y-2 text-lg">
-                    <li>• Cornell Hack4Impact | Tech Lead</li>
-                    <li>• Cornell SHPE | Outreach Chair</li>
-                    <li>• ASCEND</li>
-                    <li>• Underrepresented Minorities in Computing (URMC)</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-4 text-white">Relevant Coursework:</h4>
-                  <ul className="space-y-2 text-lg">
-                    <li>• Introduction to Analysis of Algorithms</li>
-                    <li>• Foundations of Artificial Intelligence</li>
-                    <li>• Discrete Structures</li>
-                    <li>• Practical Tools for Machine Learning, Data Science, and Operations Research</li>
-                    <li>• Object-Oriented Programming and Data Structures</li>
-                    <li>• Embedded Systems</li>
-                    <li>• Introduction to Backend Web Development</li>
-                    <li>• Probability and Statistics</li>
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-      {/* END OF EDUCATION SECTION */}
-
       {/* START OF EXPERIENCE SECTION */}
-      <section id="experience" class = "py-20 bg-gray-900">
+      
+      <section id="experience" className = "py-20 bg-gray-800">
         <div className="container mx-auto px-4">
           <motion.h2
             className="text-3xl md:text-4xl font-bold text-center mb-12 text-white"
@@ -295,6 +257,12 @@ const projects = [
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="text-gray-300">
+                  <p className="text-lg mb-6 leading-relaxed">
+                    During my internship at Capital One, I worked on the Resurrect project, which focused on 
+                    reviving deprecated APIs and modernizing legacy systems. I collaborated with my team to 
+                    design and implement scalable solutions, improving system reliability and performance. 
+                    Watch the video below to learn more about the project and our accomplishments.
+                  </p>
                   <div className="w-full max-w-2xl mx-auto aspect-video">
                     <iframe 
                       className="w-full h-full rounded-lg"
@@ -380,6 +348,7 @@ const projects = [
                           variant="outline"
                           className="w-full bg-transparent border-white text-white mt-4 hover:bg-white hover:text-gray-800 transition-colors"
                         >
+                          {project.isPdf && <FileDown className="w-4 h-4 mr-2" />}
                           Learn more
                         </Button>
                       </a>
@@ -389,6 +358,7 @@ const projects = [
                             variant="outline"
                             className="w-full bg-transparent border-white text-white ml-2 mt-4 hover:bg-white hover:text-gray-800 transition-colors"
                           >
+                            <Github className="w-4 h-4 mr-2" />
                             GitHub
                           </Button>
                         </a>
@@ -403,8 +373,69 @@ const projects = [
         </div>
       </section>
 
+      {/* END OF PROJECTS SECTION */}
+      {/* START OF EDUCATION SECTION */}
+
+      <section id="education" className="py-20 bg-gray-900">
+        <div className="container mx-auto px-4 text-white">
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold text-center mb-12 text-white"
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Education
+          </motion.h2>
+          <motion.div
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 60 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+          >
+            <Card className="bg-gray-700 border-gray-600 max-w-4xl mx-auto">
+              <CardHeader>
+                <CardTitle className="text-white text-2xl">Cornell University College of Engineering</CardTitle>
+                <CardDescription className="text-gray-300 text-lg">
+                  Bachelor of Science in Computer Science
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="text-gray-300">
+                <p className="text-lg mb-6">
+                  <strong>GPA:</strong> 3.64/4.00 (Dean's List 3/4 Semesters)
+                </p>
+                <div className = "mb-6">
+                  <h4 className="text-xl font-semibold mb-4 text-white">Leadership and Activities:</h4>
+                  <ul className="space-y-2 text-lg">
+                    <li>• Cornell Hack4Impact | Tech Lead</li>
+                    <li>• Cornell SHPE | Outreach Chair</li>
+                    <li>• ASCEND</li>
+                    <li>• Underrepresented Minorities in Computing (URMC)</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-xl font-semibold mb-4 text-white">Relevant Coursework:</h4>
+                  <ul className="space-y-2 text-lg">
+                    <li>• Introduction to Analysis of Algorithms</li>
+                    <li>• Foundations of Artificial Intelligence</li>
+                    <li>• Discrete Structures</li>
+                    <li>• Practical Tools for Machine Learning, Data Science, and Operations Research</li>
+                    <li>• Object-Oriented Programming and Data Structures</li>
+                    <li>• Embedded Systems</li>
+                    <li>• Introduction to Backend Web Development</li>
+                    <li>• Probability and Statistics</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+      {/* END OF EDUCATION SECTION */}
+
   
     </div>
+    <Footer />
     </>
   );
 }
