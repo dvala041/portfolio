@@ -101,10 +101,10 @@ const projects = [
   return (
     <>
     <Navbar />
-    <div className = "bg-gray-800 w-screen min-h-screen pt-16">
+    <div className = "bg-gray-800 w-full min-h-screen pt-16 overflow-x-hidden">
       {/* HOME SCREEN */}
-      <div id="home" className = "h-screen w-screen flex flex-col md:flex-row justify-evenly md:justify-around items-center"> 
-        <div className = "flex flex-col" >
+      <div id="home" className = "min-h-screen w-full flex flex-col lg:flex-row justify-evenly lg:justify-around items-center px-4 py-8 gap-8 lg:gap-12"> 
+        <div className = "flex flex-col shrink-0" >
 
           {/* Add typing animation to this */}
           {/* <div className = "text-4xl md:text-6xl font-bold text-white">Hey I'm David</div> */}
@@ -161,7 +161,7 @@ const projects = [
 
         {/* Carousel */}
         <motion.div
-          className = "flex flex-col justify-center items-center"
+          className = "flex flex-col justify-center items-center w-full lg:w-auto max-w-lg mx-auto lg:mx-0"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}

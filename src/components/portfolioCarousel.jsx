@@ -34,7 +34,7 @@ export default function PortfolioCarousel({
   const plugins = React.useMemo(() => (autoplay ? [Autoplay({ delay, stopOnInteraction: false })] : []), [autoplay, delay])
 
   return (
-    <div className={`w-full ${maxWidth}`}>
+    <div className={`w-full ${maxWidth} overflow-hidden`}>
       <Carousel className="w-full" plugins={plugins} opts={loop ? { loop: true } : {}}>
         <CarouselContent>
           {slides.map((slide, index) => {
