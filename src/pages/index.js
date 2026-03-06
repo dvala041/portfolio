@@ -242,7 +242,27 @@ const projects = [
           >
             Experience
           </motion.h2>
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <motion.div
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 60 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <Card className="bg-gray-700 border-gray-600 transition-colors">
+                <CardHeader>
+                  <CardTitle className="text-white text-2xl">Datadog</CardTitle>
+                  <CardDescription className="text-gray-300 text-lg">
+                    Software Engineering Intern  Incoming Summer 2026
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="text-gray-300">
+                  <p className="text-lg mb-6 leading-relaxed">
+                    Incoming Summer 2026
+                  </p>
+                  </CardContent>
+              </Card>
+            </motion.div>
             <motion.div
               whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 60 }}
@@ -258,9 +278,9 @@ const projects = [
                 </CardHeader>
                 <CardContent className="text-gray-300">
                   <p className="text-lg mb-6 leading-relaxed">
-                    During my internship at Capital One, I worked on the Resurrect project, which focused on 
-                    reviving deprecated APIs and modernizing legacy systems. I collaborated with my team to 
-                    design and implement scalable solutions, improving system reliability and performance. 
+                    During my internship at Capital One, I worked on the Resurrect project within the OneKiosk platfrom. 
+                    I created a backend service that was deployed on Capital One's kiosks to monitor their health
+                    and automatically resolve any failures.
                     Watch the video below to learn more about the project and our accomplishments.
                   </p>
                   <div className="w-full max-w-2xl mx-auto aspect-video">

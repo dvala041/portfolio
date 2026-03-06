@@ -5,8 +5,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   CarouselIndicators,
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
@@ -92,8 +90,6 @@ export default function CarouselSpacing() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
           <CarouselIndicators />
         </Carousel>
       </div>

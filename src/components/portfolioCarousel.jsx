@@ -5,8 +5,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   CarouselIndicators,
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
@@ -34,7 +32,7 @@ export default function PortfolioCarousel({
   const plugins = React.useMemo(() => (autoplay ? [Autoplay({ delay, stopOnInteraction: false })] : []), [autoplay, delay])
 
   return (
-    <div className={`w-full ${maxWidth} overflow-hidden`}>
+    <div className={`w-full ${maxWidth} overflow-hidden lg:overflow-visible`}>
       <Carousel className="w-full" plugins={plugins} opts={loop ? { loop: true } : {}}>
         <CarouselContent>
           {slides.map((slide, index) => {
@@ -59,8 +57,6 @@ export default function PortfolioCarousel({
             </CarouselItem>
           )})}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
         {showIndicators && <CarouselIndicators />}
       </Carousel>
     </div>
