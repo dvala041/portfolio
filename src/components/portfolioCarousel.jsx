@@ -7,15 +7,12 @@ import {
   CarouselItem,
   CarouselIndicators,
 } from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
 
 /**
  * PortfolioCarousel
  * Props:
  * - slides: Array of { src: string, caption?: string } or string[] (image paths in /public)
  * - maxWidth: tailwind max-width class (e.g. 'max-w-2xl')
- * - autoplay: boolean
- * - delay: autoplay delay in ms
  * - loop: boolean
  * - aspect: aspect ratio (e.g. '16/9')
  * - showIndicators: boolean
@@ -23,17 +20,13 @@ import Autoplay from "embla-carousel-autoplay"
 export default function PortfolioCarousel({
   slides = [],
   maxWidth = "max-w-2xl",
-  autoplay = true,
-  delay = 5000,
   loop = true,
   aspect = "16/9",
   showIndicators = true,
 }) {
-  const plugins = React.useMemo(() => (autoplay ? [Autoplay({ delay, stopOnInteraction: false })] : []), [autoplay, delay])
-
   return (
     <div className={`w-full ${maxWidth} overflow-hidden lg:overflow-visible`}>
-      <Carousel className="w-full" plugins={plugins} opts={loop ? { loop: true } : {}}>
+      <Carousel className="w-full" opts={loop ? { loop: true } : {}}>
         <CarouselContent>
           {slides.map((slide, index) => {
             const src = typeof slide === 'string' ? slide : slide.src

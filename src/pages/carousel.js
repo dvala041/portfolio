@@ -7,10 +7,8 @@ import {
   CarouselItem,
   CarouselIndicators,
 } from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
-import { useState, useMemo, useEffect } from "react"
 
-// Carousel page showing one slide at a time with autoplay and captions.
+// Carousel page showing one slide at a time with manual navigation and captions.
 export default function CarouselSpacing() {
   const slides = [
     { src: "/portfolio/carouselPictures/profSmile2.jpg", caption: "Taking a headshot at a garden in Secaucus, NJ (August 2024)" },
@@ -22,55 +20,12 @@ export default function CarouselSpacing() {
     { src: "/portfolio/carouselPictures/SF_Thing.jpg", caption: "Visiting the Palace of Fine Arts in San Francisco, CA" },
   ]
 
-  // create a single autoplay plugin instance so we can reset it on manual interactions
-  const autoplay = useMemo(() => Autoplay({ delay: 9000, stopOnInteraction: false }), [])
-  const [emblaApi, setEmblaApi] = useState(null)
-
-  // reset autoplay timer whenever the selected slide changes (manual or programmatic)
-  useEffect(() => {
-    if (!emblaApi || !autoplay) return
-    const onSelect = () => {
-      if (typeof autoplay.reset === "function") {
-        autoplay.reset()
-      }
-    }
-
-    emblaApi.on("select", onSelect)
-    return () => {
-      emblaApi?.off("select", onSelect)
-    }
-  }, [emblaApi, autoplay])
-
-  // also reset autoplay when the user interacts (click/tap/drag) inside the carousel viewport
-  useEffect(() => {
-    if (!emblaApi || !autoplay) return
-
-    const root = typeof emblaApi.rootNode === "function" ? emblaApi.rootNode() : null
-    const resetIfNeeded = () => {
-      if (typeof autoplay.reset === "function") autoplay.reset()
-    }
-
-    if (root) {
-      root.addEventListener("pointerup", resetIfNeeded)
-      root.addEventListener("click", resetIfNeeded)
-    }
-
-    return () => {
-      if (root) {
-        root.removeEventListener("pointerup", resetIfNeeded)
-        root.removeEventListener("click", resetIfNeeded)
-      }
-    }
-  }, [emblaApi, autoplay])
-
   return (
     <div className="min-h-screen flex items-center justify-center p-6">
       <div className="w-full max-w-lg">
         <Carousel
           className="w-full"
-          plugins={[autoplay]}
           opts={{ loop: true }}
-          setApi={setEmblaApi}
         >
           <CarouselContent>
             {slides.map(({ src, caption }, index) => (
